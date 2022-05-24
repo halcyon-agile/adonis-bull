@@ -19,8 +19,8 @@ import {
   WorkerOptions,
   Processor,
 } from 'bullmq'
-import * as BullBoard from 'bull-board'
-import { BullMQAdapter } from 'bull-board/bullMQAdapter'
+const { createBullBoard } = require('@bull-board/api')
+const { BullMQAdapter } = require('@bull-board/api/bullMQAdapter')
 
 export class BullManager implements BullManagerContract {
   constructor(
@@ -118,7 +118,7 @@ export class BullManager implements BullManagerContract {
 
   /* istanbul ignore next */
   public ui(port = 9999) {
-    const board = BullBoard.createBullBoard(
+    const board = createBullBoard(
       Object.keys(this.queues).map(
         (key) => new BullMQAdapter(this.getByKey(key).bull)
       )

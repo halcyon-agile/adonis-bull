@@ -110,6 +110,8 @@
     "@adonisjs/core": "^5.0.4-preview-rc"
   },
   "dependencies": {
+    "@bull-board/api": "^3.11.0",
+    "@bull-board/ui": "^3.11.0",
     "bull-board": "^2.0.3",
     "bullmq": "^1.24.5"
   },
