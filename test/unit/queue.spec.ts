@@ -1,7 +1,7 @@
 /// <reference path="../../adonis-typings/bull.ts" />
 
 import test from 'japa'
-import { Ioc } from '@adonisjs/fold'
+import { Ioc, IocContract } from '@adonisjs/fold'
 import { BullManager } from '../../src/BullManager'
 import { FakeLogger } from '@adonisjs/logger'
 import { LoggerContract } from '@ioc:Adonis/Core/Logger'
@@ -13,7 +13,7 @@ import { fs, MyFakeLogger } from '../../test-helpers'
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
-const CONNECTION_CONFIG = ({
+const CONNECTION_CONFIG = {
   connection: 'local',
   connections: {
     local: {
@@ -22,7 +22,7 @@ const CONNECTION_CONFIG = ({
       password: process.env.REDIS_PASSWORD || '',
     },
   },
-} as unknown) as BullConfig
+} as unknown as BullConfig
 
 test.group('Bull', (group) => {
   group.beforeEach(async () => {
@@ -30,7 +30,7 @@ test.group('Bull', (group) => {
   })
 
   test('should add a new job', async (assert) => {
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
 
     ioc.bind('App/Jobs/TestBull', () => ({
       key: 'TestBull-name',
@@ -38,7 +38,7 @@ test.group('Bull', (group) => {
       async handle() {},
     }))
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',
@@ -61,7 +61,7 @@ test.group('Bull', (group) => {
   test('should add a new job with events inside Job class', async (assert) => {
     assert.plan(1)
 
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
 
     ioc.singleton('App/Jobs/TestBull', () => {
       return new (class Job implements JobContract {
@@ -74,7 +74,7 @@ test.group('Bull', (group) => {
       })()
     })
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',
@@ -95,7 +95,7 @@ test.group('Bull', (group) => {
   })
 
   test('should call boot method when starting job instance', async (assert) => {
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
     assert.plan(1)
 
     ioc.bind('App/Jobs/TestBull', () => ({
@@ -107,7 +107,7 @@ test.group('Bull', (group) => {
       },
     }))
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',
@@ -123,7 +123,7 @@ test.group('Bull', (group) => {
   })
 
   test('should execute the job handler inside Job class', async (assert) => {
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
     const expectedResponse = Date.now()
 
     ioc.singleton('App/Jobs/TestBull', () => {
@@ -135,7 +135,7 @@ test.group('Bull', (group) => {
       })()
     })
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',
@@ -161,7 +161,7 @@ test.group('Bull', (group) => {
   test('should handle the exception raised by the handler inside Job class', async (assert) => {
     assert.plan(4)
 
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
 
     ioc.singleton('App/Jobs/TestBull', () => {
       return new (class Job implements JobContract {
@@ -172,7 +172,7 @@ test.group('Bull', (group) => {
       })()
     })
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     class FakeExceptionHandler extends BullExceptionHandler {
       constructor() {
@@ -207,7 +207,7 @@ test.group('Bull', (group) => {
   })
 
   test('should schedule a new job', async (assert) => {
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
 
     ioc.bind(
       'App/Jobs/TestBull',
@@ -218,7 +218,7 @@ test.group('Bull', (group) => {
         })()
     )
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',
@@ -237,7 +237,7 @@ test.group('Bull', (group) => {
   })
 
   test('should schedule a new job with Date', async (assert) => {
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
 
     ioc.bind(
       'App/Jobs/TestBull',
@@ -248,7 +248,7 @@ test.group('Bull', (group) => {
         })()
     )
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',
@@ -271,14 +271,14 @@ test.group('Bull', (group) => {
   })
 
   test('should not schedule when time is invalid', async (assert) => {
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
 
     ioc.bind('App/Jobs/TestBull', () => ({
       key: 'TestBull-name',
       async handle() {},
     }))
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',
@@ -294,14 +294,14 @@ test.group('Bull', (group) => {
   })
 
   test('should remove a scheduled job', async (assert) => {
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
 
     ioc.bind('App/Jobs/TestBull', () => ({
       key: 'TestBull-name',
       async handle() {},
     }))
 
-    const logger = (new FakeLogger({} as any) as unknown) as LoggerContract
+    const logger = new FakeLogger({} as any) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',
@@ -322,7 +322,7 @@ test.group('Bull', (group) => {
 
   test('should call the logger when exception handler is not defined', async (assert) => {
     assert.plan(2)
-    const ioc = new Ioc()
+    const ioc = new Ioc() as IocContract
 
     ioc.singleton('App/Jobs/TestBull', () => {
       return new (class Job implements JobContract {
@@ -333,10 +333,10 @@ test.group('Bull', (group) => {
       })()
     })
 
-    const logger = (new MyFakeLogger(
+    const logger = new MyFakeLogger(
       assert,
       {} as any
-    ) as unknown) as LoggerContract
+    ) as unknown as LoggerContract
 
     const bull = new BullManager(ioc, logger, CONNECTION_CONFIG, [
       'App/Jobs/TestBull',

@@ -26,6 +26,7 @@ declare module '@ioc:HalcyonAgile/Bull' {
   export interface BullConfig {
     connection: keyof BullConnectionsList
     connections: { [P in keyof BullConnectionsList]: BullConnectionsList[P] }
+    prefix?: string
   }
 
   export interface JobContract<T = any> {

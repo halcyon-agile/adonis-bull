@@ -168,6 +168,7 @@ export class BullManager implements BullManagerContract {
 
       jobDefinition.listeners.forEach(function (item) {
         worker.on(
+          // @ts-ignore
           item.eventName,
           jobDefinition.instance[item.method].bind(jobDefinition.instance)
         )
