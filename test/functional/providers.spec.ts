@@ -10,6 +10,6 @@ test.group('Bull Provider', (group) => {
   test('register bull provider', async (assert) => {
     const app = await setupApplication()
 
-    assert.instanceOf(app.container.use('Rocketseat/Bull'), BullManager)
+    assert.instanceOf(app.container.use('HalcyonAgile/Bull'), BullManager)
   })
 })

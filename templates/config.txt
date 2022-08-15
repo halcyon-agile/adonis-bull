@@ -1,5 +1,5 @@
 import Env from '@ioc:Adonis/Core/Env'
-import { BullConfig } from '@ioc:Rocketseat/Bull'
+import { BullConfig } from '@ioc:HalcyonAgile/Bull'
 
 /*
 |--------------------------------------------------------------------------
@@ -10,7 +10,7 @@ import { BullConfig } from '@ioc:Rocketseat/Bull'
 | the redis server.
 |
 | Do make sure to pre-define the connections type inside `contracts/bull.ts`
-| file for Rocketseat/Bull to recognize connections.
+| file for HalcyonAgile/Bull to recognize connections.
 |
 | Make sure to check `contracts/bull.ts` file for defining extra connections
 */

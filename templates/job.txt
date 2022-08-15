@@ -1,4 +1,4 @@
-import { JobContract } from '@ioc:Rocketseat/Bull'
+import { JobContract } from '@ioc:HalcyonAgile/Bull'
 
 /*
 |--------------------------------------------------------------------------

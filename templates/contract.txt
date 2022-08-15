@@ -1,4 +1,4 @@
-declare module '@ioc:Rocketseat/Bull' {
+declare module '@ioc:HalcyonAgile/Bull' {
   interface BullConnectionsList {
     local: BullConnectionContract
   }

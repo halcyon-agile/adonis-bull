@@ -5,7 +5,7 @@ import { Ioc } from '@adonisjs/fold'
 import { BullManager } from '../../src/BullManager'
 import { FakeLogger } from '@adonisjs/logger'
 import { LoggerContract } from '@ioc:Adonis/Core/Logger'
-import { JobContract, BullConfig } from '@ioc:Rocketseat/Bull'
+import { JobContract, BullConfig } from '@ioc:HalcyonAgile/Bull'
 import { BullExceptionHandler } from '../../src/BullExceptionHandler'
 import { Job } from 'bullmq'
 

@@ -27,7 +27,7 @@ export default class Listen extends BaseCommand {
    * Execute command
    */
   public async run(): Promise<void> {
-    const bull = this.application.container.use('Rocketseat/Bull')
+    const bull = this.application.container.use('HalcyonAgile/Bull')
 
     console.log({ board: this.board })
 

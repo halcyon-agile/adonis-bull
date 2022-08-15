@@ -8,7 +8,7 @@ import {
   BullConfig,
   EventListener,
   QueueOptions,
-} from '@ioc:Rocketseat/Bull'
+} from '@ioc:HalcyonAgile/Bull'
 
 import {
   Queue,
@@ -43,6 +43,7 @@ export class BullManager implements BullManagerContract {
 
       const queueConfig: QueueOptions = {
         connection: this.config.connections[this.config.connection],
+        prefix: this.config.prefix,
         defaultJobOptions: jobDefinition.options,
         ...jobDefinition.queueOptions,
       }
@@ -150,6 +151,7 @@ export class BullManager implements BullManagerContract {
       const workerOptions: WorkerOptions = {
         concurrency: jobDefinition.concurrency ?? 1,
         connection: this.config.connections[this.config.connection],
+        prefix: this.config.prefix,
         ...jobDefinition.workerOptions,
       }
 

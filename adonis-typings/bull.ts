@@ -1,4 +1,4 @@
-declare module '@ioc:Rocketseat/Bull' {
+declare module '@ioc:HalcyonAgile/Bull' {
   import * as Bullmq from 'bullmq'
 
   export interface Queue<T = any> extends Bullmq.Queue<T> {}

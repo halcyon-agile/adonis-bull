@@ -15,7 +15,7 @@ Adonis Bull provides an easy way to start using Bull.
 <br />
 
 > This documentation refers to the next version of Adonis Bull, which adds support to Adonis v5. <br />
-> If you are using Adonis 4.x, [click here](https://github.com/Rocketseat/adonis-bull/tree/master).
+> If you are using Adonis 4.x, [click here](https://github.com/HalcyonAgile/adonis-bull/tree/master).
 
 ## Table of Contents
 
@@ -52,13 +52,13 @@ Let's start by installing the package in our project.
 **Yarn**:
 
 ```sh
-yarn add @rocketseat/adonis-bull@alpha
+yarn add @halcyon-agile/adonis-bull@alpha
 ```
 
 **NPM**:
 
 ```sh
-npm install @rocketseat/adonis-bull@alpha
+npm install @halcyon-agile/adonis-bull@alpha
 ```
 
 ## Setup
@@ -66,7 +66,7 @@ npm install @rocketseat/adonis-bull@alpha
 You can configure the project by running the following command:
 
 ```sh
-node ace invoke @rocketseat/adonis-bull
+node ace invoke @halcyon-agile/adonis-bull
 ```
 
 When prompted, you must choose between two start options: `ace command` or `http server`.
@@ -108,7 +108,7 @@ When selecting this option a startup file will be created at `start/bull.ts`. Th
 The `start/bull.ts` file will look like this:
 
 ```js
-import Bull from '@ioc:Rocketseat/Bull'
+import Bull from '@ioc:HalcyonAgile/Bull'
 import Env from '@ioc:Adonis/Core/Env'
 
 const PORT = 9999
@@ -146,7 +146,7 @@ export default jobs
 This is an example of how to implement a job for sending emails:
 
 ```ts
-import { JobContract } from '@ioc:Rocketseat/Bull'
+import { JobContract } from '@ioc:HalcyonAgile/Bull'
 import Mail from '@ioc:Adonis/Addons/Mail'
 
 export default class UserRegisterEmail implements JobContract {
@@ -209,7 +209,7 @@ You can share the `job` of any `controller`, `hook` or any other place you might
 
 ```ts
 import User from 'App/Models/User'
-import Bull from '@ioc:Rocketseat/Bull'
+import Bull from '@ioc:HalcyonAgile/Bull'
 import Job from 'App/Jobs/UserRegisterEmail'
 
 export default class UserController {
@@ -231,7 +231,7 @@ Sometimes it is necessary to schedule a job instead of shooting it imediately. Y
 ```ts
 import User from 'App/Models/User'
 import ProductOnSale from 'App/Services/ProductOnSale'
-import Bull from '@ioc:Rocketseat/Bull'
+import Bull from '@ioc:HalcyonAgile/Bull'
 import Job from 'App/Jobs/UserRegisterEmail'
 import parseISO from 'date-fns/parseISO'
 
@@ -292,8 +292,8 @@ A `BullHandler.ts` file will be generated at `App/Exceptions`.
 You can change this file to handle job errors as you prefer. Here is an example using **Sentry**:
 
 ```ts
-import BullExceptionHandler from '@ioc:Rocketseat/Bull/BullExceptionHandler'
-import { Job } from '@ioc:Rocketseat/Bull'
+import BullExceptionHandler from '@ioc:HalcyonAgile/Bull/BullExceptionHandler'
+import { Job } from '@ioc:HalcyonAgile/Bull'
 import Env from '@ioc:Adonis/Core/Env'
 import Logger from '@ioc:Adonis/Core/Logger'
 import Sentry from 'App/Services/Sentry'
@@ -333,13 +333,13 @@ We expect you to follow our [Code of Conduct](/.github/CODE_OF_CONDUCT.md). You 
 
 ## License
 
-MIT License © [Rocketseat](https://github.com/Rocketseat)
+MIT License © [HalcyonAgile](https://github.com/HalcyonAgile)
 
-[npm-image]: https://img.shields.io/npm/v/@rocketseat/adonis-bull/alpha?color=8257E5&style=for-the-badge
-[npm-url]: https://www.npmjs.com/package/@rocketseat/adonis-bull/v/alpha 'npm'
+[npm-image]: https://img.shields.io/npm/v/@halcyon-agile/adonis-bull/alpha?color=8257E5&style=for-the-badge
+[npm-url]: https://www.npmjs.com/package/@halcyon-agile/adonis-bull/v/alpha 'npm'
 [license-url]: LICENSE.md
 [license-image]: https://img.shields.io/github/license/adonisjs/adonis-framework?color=8257E5&style=for-the-badge
-[build-url]: https://github.com/Rocketseat/adonis-bull/actions
-[build-image]: https://img.shields.io/github/workflow/status/Rocketseat/adonis-bull/Node.js/alpha?color=8257E5&style=for-the-badge
-[coveralls-image]: https://img.shields.io/coveralls/github/Rocketseat/adonis-bull/alpha?color=8257E5&style=for-the-badge
-[coveralls-url]: https://coveralls.io/github/Rocketseat/adonis-bull?branch=alpha
+[build-url]: https://github.com/HalcyonAgile/adonis-bull/actions
+[build-image]: https://img.shields.io/github/workflow/status/HalcyonAgile/adonis-bull/Node.js/alpha?color=8257E5&style=for-the-badge
+[coveralls-image]: https://img.shields.io/coveralls/github/HalcyonAgile/adonis-bull/alpha?color=8257E5&style=for-the-badge
+[coveralls-url]: https://coveralls.io/github/HalcyonAgile/adonis-bull?branch=alpha

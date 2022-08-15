@@ -1,5 +1,5 @@
 {
-  "name": "@rocketseat/adonis-bull",
+  "name": "@halcyon-agile/adonis-bull",
   "description": "The easiest way to start using an asynchronous job queue with AdonisJS. Supports version 5 and 4.x",
   "version": "1.0.4",
   "main": "build/providers/BullProvider.js",
@@ -50,7 +50,7 @@
   },
   "commitlint": {
     "extends": [
-      "@rocketseat/commitlint-config"
+      "@commitlint/config-conventional"
     ]
   },
   "keywords": [
@@ -63,9 +63,9 @@
     "adonis-queue"
   ],
   "bugs": {
-    "url": "https://github.com/rocketseat/adonis-bull/issues"
+    "url": "https://github.com/halcyon-agile/adonis-bull/issues"
   },
-  "homepage": "https://github.com/rocketseat/adonis-bull#readme",
+  "homepage": "https://github.com/halcyon-agile/adonis-bull#readme",
   "devDependencies": {
     "@adonisjs/ace": "^11.0.1",
     "@adonisjs/application": "^5.1.2",
@@ -76,7 +76,7 @@
     "@adonisjs/sink": "^5.1.3",
     "@commitlint/cli": "^11.0.0",
     "@poppinss/dev-utils": "^1.0.11",
-    "@rocketseat/commitlint-config": "^0.0.2",
+    "@commitlint/config-conventional": "^12.0.1",
     "@types/node": "^14.6.1",
     "@typescript-eslint/eslint-plugin": "^4.1.0",
     "@typescript-eslint/parser": "^4.1.0",
@@ -104,7 +104,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rocketseat/adonis-bull.git"
+    "url": "git+https://github.com/halcyon-agile/adonis-bull.git"
   },
   "peerDependencies": {
     "@adonisjs/core": "^5.0.4-preview-rc"
@@ -127,12 +127,12 @@
   "typings": "build/adonis-typings/index.d.ts",
   "adonisjs": {
     "instructions": "./build/instructions.js",
-    "types": "@rocketseat/adonis-bull",
+    "types": "@halcyon-agile/adonis-bull",
     "providers": [
-      "@rocketseat/adonis-bull"
+      "@halcyon-agile/adonis-bull"
     ],
     "commands": [
-      "@rocketseat/adonis-bull/build/commands"
+      "@halcyon-agile/adonis-bull/build/commands"
     ]
   }
 }

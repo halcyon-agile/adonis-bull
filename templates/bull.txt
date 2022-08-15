@@ -8,7 +8,7 @@
 |
 */
 
-import Bull from '@ioc:Rocketseat/Bull'
+import Bull from '@ioc:HalcyonAgile/Bull'
 import Env from '@ioc:Adonis/Core/Env'
 
 const PORT = 9999

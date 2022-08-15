@@ -55,7 +55,7 @@ export async function setupApplication(
   await fs.add(
     'config/bull.ts',
     `
-    import { BullConfig } from '@ioc:Rocketseat/Bull'
+    import { BullConfig } from '@ioc:HalcyonAgile/Bull'
 
     const bullConfig  = {
         connection: 'local',

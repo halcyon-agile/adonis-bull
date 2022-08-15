@@ -13,8 +13,8 @@
 |
 */
 
-import BullExceptionHandler from '@ioc:Rocketseat/Bull/BullExceptionHandler'
-import { Job } from '@ioc:Rocketseat/Bull'
+import BullExceptionHandler from '@ioc:HalcyonAgile/Bull/BullExceptionHandler'
+import { Job } from '@ioc:HalcyonAgile/Bull'
 import Logger from '@ioc:Adonis/Core/Logger'
 
 export default class JobExceptionHandler extends BullExceptionHandler {

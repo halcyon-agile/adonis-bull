@@ -2,7 +2,7 @@
  * The binding for the given module is defined inside `providers/AppProvider.ts`
  * file.
  */
-declare module '@ioc:Rocketseat/Bull/BullExceptionHandler' {
+declare module '@ioc:HalcyonAgile/Bull/BullExceptionHandler' {
   import { LoggerContract } from '@ioc:Adonis/Core/Logger'
   import { Job } from 'bullmq'
 
