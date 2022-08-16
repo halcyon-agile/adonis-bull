@@ -21,6 +21,8 @@ import {
 } from 'bullmq'
 const { createBullBoard } = require('@bull-board/api')
 const { BullMQAdapter } = require('@bull-board/api/bullMQAdapter')
+const { ExpressAdapter } = require('@bull-board/express')
+const express = require('express')
 
 export class BullManager implements BullManagerContract {
   constructor(
@@ -119,13 +121,19 @@ export class BullManager implements BullManagerContract {
 
   /* istanbul ignore next */
   public ui(port = 9999) {
-    const board = createBullBoard(
-      Object.keys(this.queues).map(
-        (key) => new BullMQAdapter(this.getByKey(key).bull)
-      )
-    )
+    const app = express()
+    const serverAdapter = new ExpressAdapter()
+    serverAdapter.setBasePath('/')
 
-    const server = board.router.listen(port, () => {
+    createBullBoard({
+      queues: Object.keys(this.queues).map(
+        (key) => new BullMQAdapter(this.getByKey(key).bull)
+      ),
+      serverAdapter: serverAdapter,
+    })
+
+    app.use('/', serverAdapter.getRouter())
+    const server = app.listen(port, () => {
       this.Logger.info(`bull board on http://localhost:${port}`)
     })
 
